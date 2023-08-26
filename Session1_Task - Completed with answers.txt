@@ -1,0 +1,211 @@
+TASK 
+
+Question 1: Completed
+1)  Create a Database product_db.
+
+Answer: create database product_db;
+
+ (Completed)
+------------------------------------------------------------------------------------
+Question 2: Completed
+  Create a table with the name "product" with the following columns 
+    product_id   - integer
+	product      - string -  size 10
+	quantity     - integer
+	price        - integer
+	purcahase_cost - integer
+    estimated_sale_price - float
+
+Answer: create table prod
+(product_id int,
+product  varchar(20),
+qty int,
+price int,
+cp int,
+est_sp float);
+
+-----------------------------------------------------------------------------------
+
+
+Question 3: Completed
+ Display all column names and their datatype and size in product. 
+
+Answer: desc prod;
+
+-----------------------------------------------------------------------------------
+
+Question 4: Completed
+Insert the below two records into product table .
+-- 1st record with values
+			-- product_id : 1
+			-- Product : PayCard
+			-- Quantity: 2 
+			-- price : 300
+			-- Puchase_cost : 8000
+			-- estimated_sale_price: 9000.56
+
+Answer: 
+INSERT INTO prod 
+VALUES (1,"paycard",2,300,8000,9000.56),(2,"paycard",2,300,8000,9000.56);
+
+------------------------------------------------------------------------------------
+Question 4.2: Completed
+-- 2nd record with values --
+			-- product_id : 2
+			-- Product : PayPoints
+			-- Quantity: 4
+			-- price : 200 
+			-- Puchase_cost : 7000
+			-- estimated_sale_price: 6700.56
+INSERT INTO prod 
+VALUES (1,"paycard",2,300,8000,9000.56),(2,"paypoints",4,200,7000,6700.56);
+
+INSERT INTO prod 
+VALUES (1,"paycard",2,300,8000,9000.56),(2,"paypoints",4,200,7000,6700.56);
+
+select * from prod;
+	
+-------------------------------------------------------------------------------------
+Question 5: Completed
+  Add a column : "location" to the existing product table with data type varchar and size 50
+
+Answer: ALTER TABLE prod add column location varchar(50);
+
+
+--------------------------------------------------------------------------------------
+
+Question 6: Completed
+  Update the value of the location
+   -- update location as USA for product_id = 1
+   -- update location as India for product_id = 2
+
+Answer: 
+UPDATE prod
+SET location= 'USA'
+WHERE product_id=1;
+
+UPDATE prod
+SET location= 'INDIA'
+WHERE product_id=2;
+
+---------------------------------------------------------------------------------------
+Question 7: Completed
+ What is the value of location for product : ‘PayCard’?
+
+Answer: select location from prod where product ='paycard';
+
+USA is the location for paycard
+
+----------------------------------------------------------------------------------------
+Question 8: Completed
+  update the product column to size of 25
+
+Answer: ALTER TABLE prod MODIFY  product varchar(25);
+----------------------------------------------------------------------------------------
+Question 9: Completed
+  Reduce the size of the location field from 50 to 20 and check if it is possible.  
+
+Answer: ALTER TABLE prod MODIFY  location varchar(20);
+ 
+Yes , we are able to update the location and there is no error because the 
+location name length is below 20 but if our name exceeds 20 errors are shown and when 
+we update the location with values lesser than the added value error is thrown
+
+doubt in this question!!!
+----------------------------------------------------------------------------------------
+
+Question 10: Completed
+   Update the quantity information of ‘PayCard’ product details .
+   -- For ‘PayCard’ product, Update the quantity from 2 to 10  
+
+
+UPDATE prod
+SET qty= 10
+WHERE product='paycard';
+select * from prod;
+
+---------------------------------------------------------------------------------------
+ 
+Question 11: Completed
+   insert one more row/record to the table
+    record with values
+			-- product_id : 4
+			-- Product : Creditcard
+			-- Quantity: 2 
+			-- price : 500
+			-- Puchase_cost : 900
+			-- estimated_sale_price: 750
+			-- location : India
+
+ANSWER:
+
+INSERT INTO prod 
+VALUES (4,"creditcard",2,500,9000,750.00,"INDIA");
+
+
+------------------------------------------------------------------------------------------
+
+Question 12: Completed
+   insert below two row/record to the table by using one query
+    record with values
+	1)		-- product_id : 5
+			-- Product : debitcard
+			-- Quantity: 4
+			-- price : 500
+			-- Puchase_cost : 2000
+			-- estimated_sale_price: 1850
+			-- location : UK
+			
+	2)      -- product_id : 6
+			-- Product : buyback
+			-- Quantity: 20 
+			-- price : 500
+			-- Puchase_cost : 10000
+			-- estimated_sale_price: 9800.95
+			-- location : USA
+
+Answer: 
+
+INSERT INTO prod 
+VALUES (5,"debitcard",4,500,2000,1850.00,"UK"),(6,"buyback",20,500,10000,9800.95,"USA");
+
+DOUBT:how to remove duplicates?
+-------------------------------------------------------------------------------------------
+			
+Question 13: COMPLETED
+   add a column zip_code to the product table
+
+ANSWER:
+
+ALTER TABLE prod add column zipcode int(6);
+
+-------------------------------------------------------------------------------------------
+			
+Question 14: COMPLETED
+   update zip_code to the product table by some random unique zip code to the product
+
+
+
+update prod set zipcode=600015
+where product_id in (2,4);
+
+
+DOUBT: why other products are updated with the same zip code ?
+
+//delete from prod where product_id=2; (deletes the zip code for prod with id =2)
+//select * from prod;
+
+-------------------------------------------------------------------------------------------
+   
+Question 15: COMPLETED
+   drop the column zip_code from the table
+
+ANSWER:
+
+ALTER TABLE prod
+DROP coloumn zipcode;
+
+--------------------------------------------------------------------------------------------
+
+
+
